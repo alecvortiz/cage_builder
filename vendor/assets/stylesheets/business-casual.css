@@ -21,6 +21,12 @@ body {
     border: 1px;
 }
 
+.mouse-form {
+    width:200px;
+    position: relative;
+    left: 41%;
+}
+
 h1,
 h2,
 h3,

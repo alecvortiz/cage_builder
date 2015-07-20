@@ -66,29 +66,45 @@
                             <span class="icon-next"></span>
                         </a>
                     </div>
-                    
-                    <h1 class="brand-name">My Cages</h1>
+                    <% user = User.find params[:id] %>
+
+                    <h1 class="brand-name"> <%= user.email %>'s Cages</h1>
                     <hr class="tagline-divider">
                     
                     
 
                     <p>
-                        <a <%= link_to 'Add Cage', new_cage_path(current_user) %> </a>
-                        </p>
+                        <% if user == current_user %>  
 
-                        <% user = User.find params[:id] %>
+                        <a <%= link_to 'Add Cage', new_cage_path(current_user) %> </a>
+                        <% end %>
+                        </p>
+                          <div class="chart" style="float: right; width: 500px;" >
+                        <h3> Cages by Genotype </h3>
+                        <p><%= pie_chart user.cages.group(:line).count %></p>
+                        <h3> Cages by Type </h3>
+                        <p><%= pie_chart user.cages.group(:cage_type).count %></p>
+                        </div>
 
                         <div class="indexer">
                         <% user.cages.each do |cage| %>
                         <% count = count + 1 %>
                         <div style="width:200px;border:2px solid blue;">
 
-                        	<p><%= cage.line %></p>
-                        	<p><%= cage.num_mice %> mice </p>
+                        	<strong><p><%= cage.line %></p></strong>
+                        	<p>
+                            <% num = cage.animals.count %> 
+                            <% if num == 1 %>
+                            <%= num %> mouse
+                            <% else %>
+                            <%= num %> mice
+                            <% end %>
+                            </p>
                         	<p><%= cage.num_litters %> litters </p>
                         <p> 
                         <% if cage.pups %> 
                         Has pups
+                        <img src="../img/pups.png" WIDTH=50 HEIGHT=auto>
                         <% else %>
                         No pups
                         <% end %>
@@ -96,11 +112,13 @@
                         </div>
                     <p>
      <tr>
-          <td><%= link_to 'Show Cage', cage_path(cage) %> | </td>     
-          <td><%= link_to 'Edit Cage', edit_cage_path(cage) %> | </td>
+          <td><%= link_to 'Show Cage', cage_path(cage) %> </td>   
+          <% if user == current_user %>  
+          <td> | <%= link_to 'Edit Cage', edit_cage_path(cage) %> | </td>
           <td><%= link_to 'Destroy Cage', [cage],
                               method: :delete,
                               data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
      </tr>
 </p>
 <% end %>

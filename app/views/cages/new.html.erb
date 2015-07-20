@@ -67,14 +67,16 @@
                             <span class="icon-next"></span>
                         </a>
                     </div>
-<div style="width:200px;">
+
+    <h1 class="brand-name"> Add Cage</h1>
+                    <hr class="tagline-divider">
+
+<div class="mouse-form">
 
 <%= simple_form_for(@cage) do |f| %>
                                                                   
  <p><%= f.input :cage_type, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" },
         :collection => ["Breeding","Injected","Waiting","Need Genotype"] %></p>
-   
-<p><%= f.input :num_mice,  :placeholder  => "Number of Mice", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
 
  <p><%= f.input :line, :placeholder  => "Line", :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" } %></p>
 

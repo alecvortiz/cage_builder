@@ -80,6 +80,12 @@
                         <a <%= link_to 'Add Cage', new_cage_path(current_user) %> </a>
                         </p>
 
+                        <div class="chart" style="float: right; width: 500px;" >
+                        <h3> Cages by Genotype </h3>
+                        <p><%= pie_chart current_user.cages.group(:line).count %></p>
+                        <h3> Cages by Type </h3>
+                        <p><%= pie_chart current_user.cages.group(:cage_type).count %></p>
+                        </div>
 
                         <div class="indexer">
                         <% @cages.each do |cage| %>
@@ -91,7 +97,12 @@
                         </p>
 
                         <p> 
-                        <%= cage.num_mice %> animal(s)
+                        <% num = cage.animals.count %> 
+                        <% if num == 1 %>
+                        <%= num %> mouse
+                        <% else %>
+                        <%= num %> mice
+                        <% end %>                        
                         </p>
 
                         <p> 
@@ -105,6 +116,7 @@
                         <p> 
                         <% if cage.pups %> 
                         Has pups
+                        <img src="../img/pups.png" WIDTH=50 HEIGHT=auto>
                         <% else %>
                         No pups
                         <% end %>
