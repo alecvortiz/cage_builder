@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_mice: 1
+  line: MyString
+  num_litters: 1
+  pups: false
+  type: 
+  user_id: 1
+
+two:
+  num_mice: 1
+  line: MyString
+  num_litters: 1
+  pups: false
+  type: 
+  user_id: 1

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dob: 1
+  gender: MyString
+  genotype: MyString
+  cage_id: 1
+
+two:
+  dob: 1
+  gender: MyString
+  genotype: MyString
+  cage_id: 1
