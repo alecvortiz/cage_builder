@@ -1,9 +1,7 @@
 <h1> Researchers </h1>
-<% count = 0 %>
 <body>
-<!--    <div class="brand">BruGram</div>
- -->    <div class="address-bar">Welcome Cage Builder!</div>
-
+ 
+ <div class="address-bar"><%= link_to 'Welcome to Cage Builder', root_path %></div>
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -42,7 +40,6 @@
     </nav>
 
     <div class="container">
-
         <div class="row">
             <div class="box">
                 <div class="col-lg-12 text-center">
@@ -54,8 +51,6 @@
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
 
-                        
-
                         <!-- Controls -->
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                             <span class="icon-prev"></span>
@@ -65,34 +60,41 @@
                         </a>
                     </div>
                     
-                    <h1 class="brand-name">Researchers</h1>
-                    <hr class="tagline-divider">
+    <h1 class="brand-name">Researchers</h1>
+    <hr class="tagline-divider">
                     
-                 <p> <%= form_tag all_path, method: :get do |f| %>
-                            <%= text_field_tag :q, params[:q] %>
-                            <%= submit_tag "Search" %>
-                            <% end %> 
-                </p>
+    <p> 
+        <%= form_tag all_path, method: :get do |f| %>
+        <%= text_field_tag :q, params[:q] %>
+        <%= submit_tag "Search" %>
+        <% end %> 
+    </p>
 
-                    <p>
-						<% @users.each do |user| %>
-						<% count = count + 1 %>
-						<p><%= link_to user.email, cages_personal_path(user) %> </p>
-						<% end %>
+        <% @users.each do |user| %>
+        <p><%= link_to user.email, cages_personal_path(user) %></p>
+	    <% end %>
 
-						<%= link_to 'Back', '/' %>
+	    <%= link_to 'Back', :back %>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <h3> Total Researchers: <%= count %> </h3> 
-                </div>
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <h3> Total Researchers: <%= User.count %> </h3> 
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12">
+                <h3> Total Cages: <%= Cage.count %> </h3>
+            </div>
+        </div>
+    </div>
+    </div>
  </body>
 
 

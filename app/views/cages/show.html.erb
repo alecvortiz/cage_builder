@@ -2,7 +2,7 @@
 
 <h1> Inspect Cage </h1>
 
-   <div class="address-bar">Welcome to Cage Builder! </div>
+   <div class="address-bar"><%= link_to 'Welcome to Cage Builder', root_path %></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -66,8 +66,10 @@
                   
                     <h1 class="brand-name">View Cage</h1>
                     <hr class="tagline-divider">
-                    
-<div style="width:200px;border:2px solid blue;text-align:left;">
+    <p>
+    </p>             
+    <h2> Cage: </h2>   
+<div style="width:200px;border:2px solid blue;text-align:left;background:white;padding-left:5px;display: inline-block;">
 
 <strong><p> 
 <%= @cage.line %>
@@ -101,9 +103,11 @@ No pups
 </p>
 </div>
 
- <h2>Animals</h2>
-<%= render @cage.animals %>
+<% if @cage.num_mice.to_i > 0 %>
+ <h2>Animals:</h2>
+<% end %>
 
+<%= render @cage.animals %>
 
                 </div>
             </div>

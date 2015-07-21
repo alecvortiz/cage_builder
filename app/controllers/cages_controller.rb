@@ -1,6 +1,5 @@
 class CagesController < ApplicationController
 
-
 	def all
 		@cages = Cage.all
 		if params[:q]
@@ -19,6 +18,7 @@ class CagesController < ApplicationController
 	 end
 
 	 def personal
+	 	# redirect_to all_path, notice: "You need to be an admin to view another researcher's cages." unless current_user && current_user.admin?
 	 	@users = User.all
 	 	@cages = Cage.all
 	 end
@@ -35,7 +35,7 @@ class CagesController < ApplicationController
 	 def create
 	 	@cage = current_user.cages.create(cages_params)
 	 	if @cage.save
-	 		redirect_to cages_path, notice: "cage successfully created."
+	 		redirect_to cages_path, notice: "Cage successfully created."
 	 	else
 	 		render 'new'
 	 	end
@@ -59,7 +59,7 @@ class CagesController < ApplicationController
 	 def destroy
 	 	cage = current_user.cages.find params[:id]
 	 	cage.destroy
-	 	redirect_to "/"
+	 	redirect_to "/", notice: "Cage successfully deleted."
 	 end
 
 	 private 

@@ -1,6 +1,6 @@
 <h1>New Cage</h1>
 
-<div class="address-bar">Welcome to Cage Builder!</div>
+<div class="address-bar"><%= link_to 'Welcome to Cage Builder', root_path %></div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -84,27 +84,17 @@
 
  <p><%= f.input :pups, :label_html => { :class => 'text-right' }, :input_html=> { :class => "form-control" },
         :collection => ["true", "false"] %></p>
-
-<p> <%= f.input :avatar, as: :file %> </p>
                                                                               
 <%= f.submit :class => "btn btn-success" %>
                
 <% end %>
 
 
-</div>
-
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    
-                </div>
-            </div>
-        </div>
 
 
 

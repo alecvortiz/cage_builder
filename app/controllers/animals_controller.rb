@@ -2,7 +2,7 @@ class AnimalsController < ApplicationController
 	def create
     @cage = Cage.find(params[:cage_id])
     @animal = @cage.animals.create(animal_params)
-    redirect_to cage_path(@cage)
+    redirect_to cage_path(@cage), notice: "Mouse successfully created."
   end
  
      def destroy

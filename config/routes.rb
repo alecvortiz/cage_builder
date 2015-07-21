@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'cages#index'
+  root 'welcome#index'
 
   get 'all' => 'cages#all'
 
