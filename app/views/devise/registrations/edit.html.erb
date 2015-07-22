@@ -65,7 +65,6 @@
 
 <h3>Cancel my account</h3>
 
-
 <% def inferno() %>
 <%  cages = current_user.cages %>
 <%  cages.each do |cage| %>
@@ -78,7 +77,6 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 <%= link_to "Back", :back %>
-<% inferno %>
 
                 </div>
             </div>

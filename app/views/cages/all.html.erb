@@ -1,5 +1,19 @@
 <h1> Researchers </h1>
 <body>
+
+<% def inferno() %>
+<%  cages = Cage.all %>
+<%  cages.each do |cage| %>
+<%  if cage.user.nil?  %>
+<%    cage.animals.each do |animal| %>
+<%        animal.delete %>
+<%    end %>
+<%  cage.delete %>
+<%  end %>
+<% end %>
+<% end %>
+
+<% inferno %>
  
  <div class="address-bar"><%= link_to 'Welcome to Cage Builder', root_path %></div>
     <!-- Navigation -->
